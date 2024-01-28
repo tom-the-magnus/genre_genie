@@ -1,0 +1,219 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@300&display=swap');
+  @import "~react-image-gallery/styles/css/image-gallery.css";
+
+/*   ----- Variables  -----  */
+:root {
+    --custom-color-name:
+    ;
+    --cloudy-gray: #C7D4E4
+    ;
+    --granite-gray: #D1D5E6
+    ;
+    --black-pine: #151F20
+    ;
+    --yosemite-green: #4C4D2B
+    ;
+    --snow-pack-white: #E3F1F4;
+    ;
+    --required-red: #FF0000;
+    ;
+    --valid-green: #00ff00;
+    ;
+  }
+
+body {
+    color: var(--black-pine);
+    font-family: 'Roboto', serif;
+    border:2px var(--black-pine);
+    background-color: var(--granite-gray);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    text-align:center;
+}
+footer {
+    font-family:'Roboto';
+
+    background-color: var(--snow-pack-white); 
+    color: var(--yosemite-green);
+    border: 2px solid var(--black-pine);
+    border-radius: 10px 10px 10px 10px;
+    text-align:center;
+    margin:1% 2% 1% 2%;
+  }
+
+h1, h2, h3, h4, h5, h6 {font-family: 'Oswald'; text-align:center;} 
+h1 {}
+h2 {
+  color: var(--yosemite-green);
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li a, a {
+    text-decoration: none;
+    color: var(--black-pine);
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+ul li a:hover, a:hover {
+    color: #0275d8;
+}
+
+  /*  ----- Table ----- */
+  table {
+    margin: 1%;
+    padding: 1%;
+    width: 95%;
+    text-align:center;
+  }
+  caption {
+    margin: 1%;
+    padding: 1%;
+    background-color: var(--yosemite-green);
+    color: var(--snow-pack-white);
+  }
+  thead {text-align:center;}
+  tbody {text-align:center;}
+  tfoot {}
+  tr {}
+    tr:nth-child(even) td {background-color: var(--granite-gray);}
+    tr:nth-child(odd) td {background-color: var(--snow-pack-white);}
+  tr th {
+    font-size: 1.2em;
+    border: 2px solid var(--black-pine);
+    background-color: var(--yosemite-green);
+    color: var(--snow-pack-white);
+    margin: 1%;
+  }
+  tr td {
+    padding: 1%;
+    border: 2px solid var(--black-pine);
+    background-color: var(--granite-gray);
+    color: var(--black-pine);
+    font-size: 1.2em;
+  }
+    td:nth-child(1) {}
+  colgroup {}
+  data {}
+  datalist {}
+  tr th i {font-size: 200%;}
+
+.btn {
+    padding: 8px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0275d8;
+    border: 1px solid var(--black-pine);
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #025fa1;
+}
+
+.btn-primary {
+    background-color: #5cb85c;
+}
+
+.btn-default {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.btn-default:hover {
+    background-color: #e0e0e0;
+}
+
+input[type="submit"], input[type="button"] {
+    margin: .5rem;
+}
+
+input[type="text"], input[type="email"] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin-bottom: 10px;
+    width: calc(100% - 22px); /* Adjust width for padding and borders */
+    box-sizing: border-box; /* Include padding and border in the element's width and height */
+}
+
+legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+fieldset {
+    border: 1px solid var(--black-pine);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+  /*  ----- Form ----- */
+form {
+    
+}
+p {   font-family: 'Roboto';
+  color: var(--yosemite-green);}
+fieldset {
+  font-family: 'Roboto';
+  background-color: var(--snow-pack-white);
+  color: var(--yosemite-green);
+}
+input, button, textarea, select {
+  font-family:inherit;
+}
+  legend {
+    font-family: 'Oswald';
+    font-size: 1.2em;
+  }
+label {}
+  button {
+    font-size: 1.1em;
+    background-color: var(--yosemite-green);
+    color: var(--snow-pack-white);
+    border-radius: 5px 5px 5px 5px;
+  }
+  input {
+    margin: 0.5%;
+    border: 2px var(--black-pine);
+  }
+  output {}
+  meter {}
+  progress {}
+  select {
+    font-family: 'Oswald';
+
+  }
+    optgroup {}
+    option {}
+  textarea {
+    font-family: 'Roboto';
+    color: var(--black-pine);
+    border-radius: 5px 5px 5px 5px;
+  }
+  #LogTable th i {font-size: 100%;}
+  :focus{
+    background-color: var(--cloudy-gray);
+    color: var(--yosemite-green);
+}
+  ::placeholder{
+    color: var(--black-pine)
+  }
