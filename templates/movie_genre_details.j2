@@ -1,0 +1,76 @@
+<!-- All code is based on the CS 340 starter code, with the exception of UI aesthetic styling -->
+
+<html>
+<head>
+	<title>Movie Genre Details</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}">
+	<script language="JavaScript">
+		// ... [existing JavaScript functions remain unchanged]
+	</script>
+</head>
+
+<body onload="browseMovieGenreDetails()">
+	<h1> <img src="static\icons\favicon-32x32.png" alt="Description of image"> Movie Genre Details</h1> [ <a href="index">Homepage</a>  | <a href="rentals">Rentals</a> | <a href="customers">Customers</a>  | <a href="movies">Movies</a> | <a href="genres">Genres</a> | <a href="movie_genre_details">Movie Genre Details</a> ]
+	
+	<div id="browse">
+		<p> Browse all movies and genres they belong to. Select add new or delete to update the movie genre catalog. </p>
+		<p><a href="#" onClick="newMovieGenreDetail()"></a> </p>
+		<table style =";margin-left:auto;margin-right:auto;" border="1" cellpadding="5">
+			{% if details %}
+				<thead>
+                    <tr>
+                        <!-- Replace dynamic headers with static, readable names -->
+                        <th scope="col">Pair ID</th>
+                        <th scope="col">Movie</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col" colspan="2">Actions</th> <!-- Column for actions -->
+                    </tr>
+                </thead>
+				<tbody>
+					{% for item in details %}
+						<tr>
+							{% for key in item.keys() %}
+								<td> {{ item[key] }} </td> 
+							{% endfor %}
+							<td><a href="edit_movie_genre_details/{{ item.movie_genre_id }}" class="btn btn-default">Edit</a></td>
+							<td><a href="delete_movie_genre_details/{{ item.movie_genre_id }}" class="btn btn-default">Delete</a></td>
+						</tr> 
+					{% endfor %}
+				</tbody>
+			{% else %}
+				<p>No movie genre details found.</p>
+			{% endif %}
+		</table>   
+	</div> <!-- browse -->
+
+	<br>
+
+	<div id="insert">
+		<!-- form to INSERT new data into MovieGenreDetails-->
+		<form id="insertMovieGenreDetail" action="/movie_genre_details" method="post">
+			<legend><strong>Add Movie Genre Detail</strong></legend>
+			<fieldset>
+				<label for="movie_id">Movie:</label>
+				<select name="movie_id" id="movie_id" required>
+					{% for movie in movies %}
+					<option value="{{ movie.movie_id }}">{{ movie.title }}</option>
+					{% endfor %}
+				</select>
+
+				<label for="genre_id">Genre:</label>
+				<select name="genre_id" id="genre_id" required>
+					{% for genre in genres %}
+					<option value="{{ genre.genre_id }}">{{ genre.genre_name }}</option>
+					{% endfor %}
+				</select>
+
+				<input type="submit" value="Add Movie Genre Detail" name="Add_Movie_Genre_Detail" class="btn btn-primary" style="margin:.5rem;">
+				<input class="btn" type="button" value="Cancel" onClick="browseMovieGenreDetails()"> 
+			</fieldset>
+		</form>
+	</div><!--insert-->
+</body>
+</html>

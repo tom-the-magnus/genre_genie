@@ -1,0 +1,29 @@
+<!-- All code is based on the CS 340 starter code, with the exception of UI aesthetic styling -->
+
+<html>
+<head>
+    <title>Genre Genie </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}">
+</head>
+<body>
+    <h2>Genre Genie Database</h2>
+    <p>Welcome to Genre Genie's database. As an administrator, you can add customers, movies, genres and rental records. You can also update customer information, and update or attach additional genres to a movie title.</p>
+    <ul>
+        <li><a href="/rentals">Rentals</a></li>
+        <li><a href="/customers">Customers</a></li>
+        <li><a href="/movies">Movies</a></li>
+        <li><a href="/genres">Genres</a></li>
+        <li><a href="/movie_genre_details">Movie Genre Details</a></li>
+    </ul>
+    <p>
+    <img src="static\icons\android-chrome-384x384.png" alt="Description of image">
+    </p>
+    <footer>
+    <p> Genre Genie -- "Where the magic of movies thrives!" </p>
+    <p> &copy; Anthony Javiya & Thomas Magnus </p>
+    </footer>
+</body>
+</html>

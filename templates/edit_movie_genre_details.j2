@@ -1,0 +1,74 @@
+<!-- All code is based on the CS 340 starter code, with the exception of UI aesthetic styling -->
+
+<html>
+
+<head>
+	<title>Edit Movie Genre Detail</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}">
+</head>
+
+<body>
+    <div>
+        <table  cellpadding="5"> 
+            <h2> Updating Movie Genre Detail: </h2>
+            <!-- Access data tuple passed from webapp.py -->
+            {% if data %}
+                <thead>
+                    <tr>
+                        <!-- Iterate through each key in the first entry to get the column name -->
+                        {% for key in data[0].keys() %}
+
+                        <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+                        <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+                        
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+                    </tr>
+
+                <tbody>
+                    <!-- Now, iterate through every item in data -->
+                    {% for item in data %}
+                    <tr>
+                        <!-- Then iterate through every key in the current item dictionary -->
+                        {% for key in item.keys() %}
+                        
+                        <!-- Create a <td> element with the value of that key in it -->
+                        <td>{{item[key]}}</td> {% endfor %} 
+                    </tr> 
+                    {% endfor %} 
+            {% endif %} 
+        </table>
+
+    <div id="edit">
+        <!-- form to edit data in Movie Genre Details-->
+        <form id="editMovieGenreDetail" action="/edit_movie_genre_details/{{movie_genre_detail.movie_genre_id}}" method="post">
+            <fieldset>
+                <!-- Hidden input for Movie Genre ID -->
+                <input type="hidden" value="{{ movie_genre_detail.movie_genre_id }}" id="movie_genre_id" name="movie_genre_id">
+
+                <!-- Movie dropdown - disabled so it cannot be changed -->
+                <label for="movie_id">Movie:</label>
+                <select name="movie_id" id="movie_id" required disabled>
+                    {% for movie in movies %}
+                    <option value="{{ movie.movie_id }}" {% if movie.movie_id == movie_genre_detail.movie_id %}selected{% endif %}>{{ movie.title }}</option>
+                    {% endfor %}
+                </select>
+                <!-- Include a hidden input to send the locked movie_id value -->
+                <input type="hidden" name="movie_id" value="{{ movie_genre_detail.movie_id }}">
+
+                <!-- Genre dropdown -->
+                <label for="genre_id">Genre:</label>
+                <select name="genre_id" id="genre_id" required>
+                    {% for genre in genres %}
+                    <option value="{{ genre.genre_id }}" {% if genre.genre_id == movie_genre_detail.genre_id %}selected{% endif %}>{{ genre.genre_name }}</option>
+                    {% endfor %}
+                </select>
+            </fieldset>
+            <input type="submit" value="Edit Movie Genre Detail" name="Edit_Movie_Genre_Detail" class="btn btn-primary" style="margin:.5rem;">
+            <a href='/movie_genre_details'><input class="btn" type="button" value="Cancel"></a>
+        </form>
+    </div>
+</html>

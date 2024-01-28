@@ -1,0 +1,69 @@
+<!-- All code is based on the CS 340 starter code, with the exception of UI aesthetic styling -->
+
+<html>
+<head>
+	<title>Customers</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}">
+	<script language="JavaScript">
+		// ... [existing JavaScript functions]
+	</script>
+</head>
+
+<body onload="browseCustomers()">
+	<h1><img src="static\icons\favicon-32x32.png" alt="Description of image"> Customers</h1> [ <a href="index">Homepage</a>  | <a href="rentals">Rentals</a> | <a href="customers">Customers</a>  | <a href="movies">Movies</a> | <a href="genres">Genres</a> | <a href="movie_genre_details">Movie Genre Details</a> ]
+	
+	<div id="browse">
+		<p> Browse all Customers. Select add new, edit or delete to update the customer base. </p>
+		<table style =";margin-left:auto;margin-right:auto;" border="1" cellpadding="5">
+            {% if data %}
+				<thead>
+                    <tr>
+                        <!-- Replace dynamic headers with static, readable names -->
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">First Name</th>
+						<th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col" colspan="2">Actions</th> <!-- Column for actions -->
+                    </tr>
+                </thead>
+				<tbody>
+					{% for item in data %}
+					    <tr>
+						    {% for key in item.keys() %}
+						    <td>{{ item[key] }}</td> 
+                            {% endfor %}
+						    <td><a href="edit_customers/{{item.customer_id}}" class="btn btn-default">Edit</a></td>
+						    <td><a href="delete_customers/{{item.customer_id}}" class="btn btn-default">Delete</a></td>
+					    </tr> 
+                    {% endfor %} 
+                {% endif %} 
+            </tbody>
+        </table>   
+	</div>	<!-- browse -->
+
+	<br>
+
+	<div id="insert">
+		<!-- form to INSERT new data into Customers-->
+		<form id="insertCustomer" action="/customers" method="post">
+			<legend><strong>Add Customer</strong></legend>
+			<fieldset>
+				<label for="first_name">First Name:</label>
+				<input type="text" id="first_name" name="first_name" pattern="[A-Za-z]{1,}" placeholder="First Name" required>
+
+				<label for="last_name">Last Name:</label>
+				<input type="text" id="last_name" name="last_name" pattern="[A-Za-z0-9]{1,}" placeholder="Last Name" required>
+
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" placeholder="sample@email.com" required> 
+
+				<input type="submit" value="Add Customer" name="Add_Customer" class="btn btn-primary" style="margin:.5rem;">
+				<input class="btn" type="button" value="Cancel" onClick="browseCustomers()"> 
+			</fieldset>
+		</form>
+	</div><!--insert-->
+</body>
+</html>
