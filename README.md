@@ -1,5 +1,4 @@
-# CS_340_Database_Website
-This is the portfolio project for CS 340, which features a database driven website for a fictional movie business which serves as the database for their operations
+# Genre Genie
+This is my portfolio project for CS-340: Intro to Databases. It is a database web-app for a fictional movie business. The GUI for the webapp allows users to execute all CRUD operations for most entities in the database. 
 
-CITATION NOTICE - 12/07/2023
-All code is based on the CS 340 starter code, with the exception of the code to dynamically display drop downs, and the portion of the add movie query that also requires adding a genre input. Displaying dynamic drop-downs and user-friendly attributes in display tables, as well as the re-route if all Customers are deleted are entirely our own work
+The database is designe dusing MySQL, MariaDB, and Flask. The front-end is designed using Jinja HTML templates and CSS.
